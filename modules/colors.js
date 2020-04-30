@@ -1,9 +1,11 @@
-// (a,c,b,d...) => [colors]
-export const createColorsArray = (...colors) => {
-  return [...color]
+// (a,b,c...) => [a,b,c...]
+const createColorsArray = (...colors) => {
+  return [...colors]
 }
 
 // [colors] => color
-export const getRandomColor = (colors) => {
-  return colors[Math.random(0, colors.length)]
+const getRandomColor = (colors) => {
+  return colors[Math.floor(Math.random() * colors.length)]
 }
+
+export { createColorsArray, getRandomColor }
