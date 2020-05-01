@@ -1,22 +1,25 @@
-import { createColorsArray, getRandomColor } from './modules/colors.js'
+import Utils from './modules/utils.js'
+import Colors from './modules/colors.js'
 import { draw } from './modules/draw.js'
 
-let canvas = document.querySelector('canvas')
-let cx = canvas.getContext('2d')
-draw(cx)
+let cv = document.querySelector('canvas')
+let ctx = cv.getContext('2d')
 
-let img = canvas.toDataURL('image/png')
+draw(cv, ctx)
 
-const generateMap = () => console.log('generate')
+let img = cv.toDataURL('image/png')
+
 const exportMap = (img) => {
   document.write(`<img src=${img}/>`)
 }
 
 let btnGenerate = document.getElementById('btn-generate')
-btnGenerate.addEventListener('click', generateMap)
+btnGenerate.addEventListener('click', () => draw(cv, ctx))
 
 let btnExport = document.getElementById('btn-export')
 btnExport.addEventListener('click', (img) => {
   exportMap(img)
   console.log('exported')
 })
+
+console.log(Colors.test())

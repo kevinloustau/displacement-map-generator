@@ -1,13 +1,32 @@
-const draw = (cx) => {
-  cx.fillStyle = 'grey'
-  cx.fillRect(10, 10, 100, 50)
+import Utils from './utils.js'
 
-  cx.beginPath()
-  for (let y = 10; y < 100; y += 10) {
-    cx.moveTo(10, y)
-    cx.lineTo(90, y)
-  }
-  cx.stroke()
+const randomPos = (width, height) => {
+  const x = Utils.getRandomInt(0, width)
+  const y = Utils.getRandomInt(0, height)
+  return { x, y }
+}
+
+const drawRandomRect = (cv, ctx) => {
+  ctx.fillStyle = 'grey'
+  const rPos = randomPos(cv.width, cv.height)
+  ctx.fillRect(rPos.x, rPos.y, 50, 50)
+  console.log(`rect at : ${rPos.x}, ${rPos.y}`)
+}
+
+//cv: canvas,  cx: context
+const draw = (cv, ctx) => {
+  //Fill background:
+  ctx.fillStyle = 'black'
+  ctx.fillRect(0, 0, cv.width, cv.height)
+
+  drawRandomRect(cv, ctx)
+  drawRandomRect(cv, ctx)
+  drawRandomRect(cv, ctx)
+  drawRandomRect(cv, ctx)
+  drawRandomRect(cv, ctx)
+
+  //const nbrOfRect = Utils.itr(50)
+  //nbrOfRect.map(drawRandomRect(cv, ctx))
 }
 
 /* diplacement map: gray level color:

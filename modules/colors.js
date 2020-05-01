@@ -1,11 +1,17 @@
+import Utils from './utils.js'
+
+export default function Colors() {}
+
 // (a,b,c...) => [a,b,c...]
-const createColorsArray = (...colors) => {
+Colors.createColorsArray = (...colors) => {
   return [...colors]
 }
 
 // [colors] => color
-const getRandomColor = (colors) => {
-  return colors[Math.floor(Math.random() * colors.length)]
+Colors.getRandomColorIn = (colors) => {
+  return colors[Utils.getRandomInt(0, colors.length)]
 }
 
-export { createColorsArray, getRandomColor }
+Colors.test = () => {
+  return 'colors!'
+}
