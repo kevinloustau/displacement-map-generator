@@ -1,17 +1,24 @@
 import Utils from './modules/utils.js'
-import Colors from './modules/colors.js'
 import { draw } from './modules/draw.js'
 
 let cv = document.querySelector('canvas')
 let ctx = cv.getContext('2d')
-
-draw(cv, ctx)
 
 let img = cv.toDataURL('image/png')
 
 const exportMap = (img) => {
   document.write(`<img src=${img}/>`)
 }
+
+let itr = 0
+
+let sliderSize = document.getElementById('slider-size')
+sliderSize.addEventListener('mouseup', (v) => console.log(v.target.value))
+let sliderIterations = document.getElementById('slider-iterations')
+sliderIterations.addEventListener('mouseup', (v) => {
+  itr = v.target.value
+  update()
+})
 
 let btnGenerate = document.getElementById('btn-generate')
 btnGenerate.addEventListener('click', () => draw(cv, ctx))
@@ -22,4 +29,9 @@ btnExport.addEventListener('click', (img) => {
   console.log('exported')
 })
 
-console.log(Colors.test())
+const update = () => {
+  //draw(cv, ctx, itr)
+}
+
+draw(cv, ctx)
+//update()

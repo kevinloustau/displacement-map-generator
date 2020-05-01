@@ -1,4 +1,5 @@
 import Utils from './utils.js'
+import Colors from './colors.js'
 
 const randomPos = (width, height) => {
   const x = Utils.getRandomInt(0, width)
@@ -7,31 +8,26 @@ const randomPos = (width, height) => {
 }
 
 const drawRandomRect = (cv, ctx) => {
-  ctx.fillStyle = 'grey'
+  const rPos1 = randomPos(cv.width, cv.height)
+  const rPos2 = randomPos(cv.width, cv.height)
+
+  const colors = ['#FFFFFF', '#000000']
+  Colors.createLinearGradient(ctx, rPos1.x, rPos1.y, rPos2.x, rPos2.y, colors)
+  //ctx.fillStyle = Colors.getRandomGreyscaleColor()
+
   const rPos = randomPos(cv.width, cv.height)
   ctx.fillRect(rPos.x, rPos.y, 50, 50)
-  console.log(`rect at : ${rPos.x}, ${rPos.y}`)
 }
 
 //cv: canvas,  cx: context
 const draw = (cv, ctx) => {
-  //Fill background:
+  //Background:
   ctx.fillStyle = 'black'
   ctx.fillRect(0, 0, cv.width, cv.height)
 
-  drawRandomRect(cv, ctx)
-  drawRandomRect(cv, ctx)
-  drawRandomRect(cv, ctx)
-  drawRandomRect(cv, ctx)
-  drawRandomRect(cv, ctx)
-
-  //const nbrOfRect = Utils.itr(50)
-  //nbrOfRect.map(drawRandomRect(cv, ctx))
+  //Generate rects
+  const itr = Utils.itr(90)
+  itr.map(() => drawRandomRect(cv, ctx))
 }
-
-/* diplacement map: gray level color:
-hsl(hue, saturation, lightness)
-hsl(0,0,100)
-*/
 
 export { draw }

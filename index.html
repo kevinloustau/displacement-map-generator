@@ -13,6 +13,16 @@
     </div>
     <div id="content">
       <canvas width="512" height="512"></canvas>
+      <div id="settings">
+        <div id="size">
+          <label for="size">Size</label>
+          <input type="range" min="1" max="200" value="50" class="slider" id="slider-size" />
+        </div>
+        <div id="iterations">
+          <label for="size">Iterations</label>
+          <input type="range" min="1" max="500" value="50" class="slider" id="slider-iterations" />
+        </div>
+      </div>
       <div id="btn-group">
         <input id="btn-generate" type="button" value="generate" />
         <input id="btn-export" type="button" value="export" />
