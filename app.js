@@ -1,27 +1,36 @@
 import Utils from './modules/utils.js'
-import { draw } from './modules/draw.js'
+import Draw from './modules/draw.js'
 
 let cv = document.querySelector('canvas')
 let ctx = cv.getContext('2d')
 
-let img = cv.toDataURL('image/png')
-
-const exportMap = (img) => {
-  document.write(`<img src=${img}/>`)
+const settings = {
+  iterations: 100,
+  size: 10,
+  shapes: {
+    square: true,
+    oval: false,
+  },
 }
 
-let itr = 0
-
+//Slider - Size
 let sliderSize = document.getElementById('slider-size')
-sliderSize.addEventListener('mouseup', (v) => console.log(v.target.value))
+sliderSize.value = settings.size
+sliderSize.addEventListener('mouseup', (v) => {
+  settings.size = parseInt(v.target.value)
+  update()
+})
+
+//Slider - Iterations
 let sliderIterations = document.getElementById('slider-iterations')
+sliderIterations.value = settings.iterations
 sliderIterations.addEventListener('mouseup', (v) => {
-  itr = v.target.value
+  settings.iterations = parseInt(v.target.value)
   update()
 })
 
 let btnGenerate = document.getElementById('btn-generate')
-btnGenerate.addEventListener('click', () => draw(cv, ctx))
+btnGenerate.addEventListener('click', () => update())
 
 let btnExport = document.getElementById('btn-export')
 btnExport.addEventListener('click', (img) => {
@@ -30,8 +39,13 @@ btnExport.addEventListener('click', (img) => {
 })
 
 const update = () => {
-  //draw(cv, ctx, itr)
+  Draw(cv, ctx, settings)
+  console.log(settings)
 }
 
-draw(cv, ctx)
-//update()
+update()
+
+let img = cv.toDataURL('image/png')
+const exportMap = (img) => {
+  document.write(`<img src=${img}/>`)
+}

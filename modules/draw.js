@@ -7,27 +7,23 @@ const randomPos = (width, height) => {
   return { x, y }
 }
 
-const drawRandomRect = (cv, ctx) => {
-  const rPos1 = randomPos(cv.width, cv.height)
-  const rPos2 = randomPos(cv.width, cv.height)
-
-  const colors = ['#FFFFFF', '#000000']
-  Colors.createLinearGradient(ctx, rPos1.x, rPos1.y, rPos2.x, rPos2.y, colors)
-  //ctx.fillStyle = Colors.getRandomGreyscaleColor()
-
+const drawRandomRect = (cv, ctx, size, colors) => {
+  ctx.save()
   const rPos = randomPos(cv.width, cv.height)
-  ctx.fillRect(rPos.x, rPos.y, 50, 50)
+  Colors.createLinearGradient(ctx, rPos.x, rPos.y, rPos.x + size, rPos.y + size, colors)
+  //ctx.fillStyle = Colors.getRandomGreyscaleColor()
+  ctx.rotate((Utils.getRandomInt(0, 360) * Math.PI) / 180)
+  ctx.fillRect(rPos.x, rPos.y, size, size)
+  ctx.restore()
 }
 
-//cv: canvas,  cx: context
-const draw = (cv, ctx) => {
+//cv: canvas,  cx: context, itr: iterations
+export default function Draw(cv, ctx, settings) {
   //Background:
   ctx.fillStyle = 'black'
   ctx.fillRect(0, 0, cv.width, cv.height)
 
   //Generate rects
-  const itr = Utils.itr(90)
-  itr.map(() => drawRandomRect(cv, ctx))
+  const itrMappable = Utils.itr(settings.iterations)
+  itrMappable.map(() => drawRandomRect(cv, ctx, settings.size, ['#FFFFFF', '#000000']))
 }
-
-export { draw }
