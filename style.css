@@ -25,11 +25,21 @@ input[type='button'] {
   width: 80px;
 }
 
+#inputs {
+  grid-area: inputs;
+}
+
 #btn-group {
+  grid-area: btn-group;
   display: flex;
-  width: 512px;
   justify-content: space-between;
 }
 
 #settings {
+  display: grid;
+  grid-template-areas: 'inputs btn-group';
+  justify-content: center;
+  align-content: center;
+  justify-items: stretch;
+  align-items: stretch;
 }

@@ -1,0 +1,2 @@
+[] upcale export to 2k/4k
+[] put settings sliders + label correctly aligned

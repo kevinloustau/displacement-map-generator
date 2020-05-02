@@ -14,18 +14,20 @@
     <div id="content">
       <canvas width="512" height="512"></canvas>
       <div id="settings">
-        <div id="size">
-          <label for="size">Size</label>
-          <input type="range" min="1" max="150" class="slider" id="slider-size" />
+        <div id="inputs">
+          <div id="size" class="settings-part">
+            <label for="size">Size</label>
+            <input type="range" min="1" max="150" class="slider" id="slider-size" />
+          </div>
+          <div id="iterations" class="settings-part">
+            <label for="size">Iterations</label>
+            <input type="range" min="10" max="500" class="slider" id="slider-iterations" />
+          </div>
         </div>
-        <div id="iterations">
-          <label for="size">Iterations</label>
-          <input type="range" min="10" max="500" class="slider" id="slider-iterations" />
+        <div id="btn-group">
+          <input id="btn-generate" type="button" value="generate" />
+          <input id="btn-export" type="button" value="export" />
         </div>
-      </div>
-      <div id="btn-group">
-        <input id="btn-generate" type="button" value="generate" />
-        <input id="btn-export" type="button" value="export" />
       </div>
     </div>
   </body>
