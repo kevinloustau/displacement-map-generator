@@ -21,25 +21,35 @@ canvas {
   margin: 1em 0;
 }
 
+.label-slider {
+  display: flex;
+  align-items: center;
+}
+
+.label-slider label {
+  font-size: 14px;
+  text-align: right;
+  vertical-align: auto;
+  width: 70px;
+  margin: 0 0.5em;
+}
+
+#settings {
+  display: flex;
+  grid-template-areas: 'inputs btn-group';
+  align-items: center;
+  width: 512px;
+  justify-content: space-between;
+}
+
+/* button  */
 input[type='button'] {
   width: 80px;
 }
 
-#inputs {
-  grid-area: inputs;
-}
-
 #btn-group {
-  grid-area: btn-group;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-}
-
-#settings {
-  display: grid;
-  grid-template-areas: 'inputs btn-group';
-  justify-content: center;
-  align-content: center;
-  justify-items: stretch;
-  align-items: stretch;
 }
