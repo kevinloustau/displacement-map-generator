@@ -10,12 +10,14 @@ const randomPos = (width, height) => {
 const drawRandomRect = (cv, ctx, size, colors) => {
   ctx.save()
   const rPos = randomPos(cv.width, cv.height)
-  Colors.createLinearGradient(ctx, rPos.x, rPos.y, rPos.x + size, rPos.y + size, colors)
+  Colors.createLinearGradient(ctx, rPos.x + Utils.getRandomInt(-size, size), rPos.y + Utils.getRandomInt(-size, size), rPos.x + Utils.getRandomInt(-size, size), rPos.y + Utils.getRandomInt(-size, size), colors)
   //ctx.fillStyle = Colors.getRandomGreyscaleColor()
   ctx.rotate((Utils.getRandomInt(0, 360) * Math.PI) / 180)
   ctx.fillRect(rPos.x, rPos.y, size, size)
   ctx.restore()
 }
+
+//const drawRandomArc = (cv, ctx, size, colors) => {}
 
 //cv: canvas,  cx: context, itr: iterations
 export default function Draw(cv, ctx, settings) {

@@ -33,19 +33,22 @@ let btnGenerate = document.getElementById('btn-generate')
 btnGenerate.addEventListener('click', () => update())
 
 let btnExport = document.getElementById('btn-export')
-btnExport.addEventListener('click', (img) => {
-  exportMap(img)
-  console.log('exported')
+btnExport.addEventListener('click', () => {
+  const dataURL = cv.toDataURL('image/jpeg', 1.0)
+  downloadImage(dataURL, 'displacementMap.jpg')
 })
+
+const downloadImage = (data, filename = 'texture.jpg') => {
+  var a = document.createElement('a')
+  a.href = data
+  a.download = filename
+  document.body.appendChild(a)
+  a.click()
+}
 
 const update = () => {
   Draw(cv, ctx, settings)
-  console.log(settings)
+  //console.log(settings)
 }
 
 update()
-
-let img = cv.toDataURL('image/png')
-const exportMap = (img) => {
-  document.write(`<img src=${img}/>`)
-}
