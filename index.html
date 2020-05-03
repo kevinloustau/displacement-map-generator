@@ -9,24 +9,30 @@
   </head>
   <body>
     <div id="header">
-      <h1>Map generator</h1>
+      <h1>Displacement map generator</h1>
     </div>
     <div id="content">
-      <canvas width="512" height="512"></canvas>
+      <canvas id="canvas-displace" width="4096" height="4096"></canvas>
       <div id="settings">
-        <select id="Shape" class="setting">
+        <select id="selector-size">
+          <option value="512">512</option>
+          <option value="1024">1024</option>
+          <option value="2048">2048</option>
+          <option value="4096">4096</option>
+        </select>
+        <select id="selector-shape" class="setting">
           <option value="square">square</option>
-          <option value="circle">circle</option>
+          <option value="arc">arc</option>
           <option value="line">line</option>
         </select>
         <div id="inputs" class="setting">
           <div id="size" class="label-slider">
             <label for="size">Size</label>
-            <input type="range" min="1" max="150" class="slider" id="slider-size" />
+            <input type="range" min="1" max="1000" class="slider" id="slider-size" />
           </div>
           <div id="iterations" class="label-slider">
             <label for="iterations">Iterations</label>
-            <input type="range" min="10" max="500" class="slider" id="slider-iterations" />
+            <input type="range" min="10" max="5000" class="slider" id="slider-iterations" />
           </div>
         </div>
         <div id="btn-group" class="setting">

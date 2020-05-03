@@ -110,12 +110,12 @@ Colors.getRandomGreyscaleColor = () => {
   return Colors.HSLToRGB(0, 0, Utils.getRandomInt(0, 100))
 }
 
-Colors.createLinearGradient = (ctx, x0, y0, x1, y1, colors) => {
+Colors.createLinearGradient = (ctx, x0, y0, x1, y1, colors, isStroke) => {
   let gradiant = ctx.createLinearGradient(x0, y0, x1, y1)
   colors.map((color, index) => {
     gradiant.addColorStop(index, color)
   })
-  ctx.fillStyle = gradiant
+  isStroke ? (ctx.strokeStyle = gradiant) : (ctx.fillStyle = gradiant)
 }
 
 // TODO

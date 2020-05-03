@@ -16,12 +16,8 @@ Utils.getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-//  label => value => log(label: value )
-Utils.trace = (label) => (value) => {
-  console.log(`${label}: ${value}`)
-  return value
+Utils.randomPos = (width, height) => {
+  const x = Utils.getRandomInt(0, width)
+  const y = Utils.getRandomInt(0, height)
+  return { x, y }
 }
-
-//  Pipe function
-Utils.pipe = (...fns) => (x) => fns.reduce((y, f) => f(y), x)
-//Usage= => const h = pipe(g, trace('after g'), f, trace('after f'))

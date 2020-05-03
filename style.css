@@ -19,6 +19,8 @@
 canvas {
   border: 1px solid;
   margin: 1em 0;
+  width: 512px;
+  height: 512px;
 }
 
 .label-slider {
@@ -28,7 +30,7 @@ canvas {
 
 .label-slider label {
   font-size: 14px;
-  text-align: right;
+  text-align: center;
   vertical-align: auto;
   width: 70px;
   margin: 0 0.5em;
@@ -40,6 +42,14 @@ canvas {
   align-items: center;
   width: 512px;
   justify-content: space-between;
+}
+
+*:focus {
+  outline: none;
+}
+
+*:active {
+  outline: none;
 }
 
 /* button  */

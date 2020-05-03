@@ -1,2 +1,2 @@
-[] upcale export to 2k/4k
-[] implement shapes
+[] displayLoader 
+
