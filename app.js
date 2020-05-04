@@ -8,21 +8,21 @@ let ctx = cv.getContext('2d')
 let shapeSelector = document.getElementById('selector-shape')
 shapeSelector.addEventListener('change', (v) => {
   State.shape = v.target.value
-  update()
+  update(State.state)
 })
 
 let sliderSize = document.getElementById('slider-size')
 sliderSize.value = settings.size
 sliderSize.addEventListener('mouseup', (v) => {
   State.size = parseInt(v.target.value)
-  update()
+  update(State.state)
 })
 
 let sliderIterations = document.getElementById('slider-iterations')
 sliderIterations.value = settings.iterations
 sliderIterations.addEventListener('mouseup', (v) => {
   State.iterations = parseInt(v.target.value)
-  update()
+  update(State.state)
 })
 
 let btnGenerate = document.getElementById('btn-generate')
@@ -34,7 +34,7 @@ sizeSelector.addEventListener('change', (v) => {
   displaceCanvas.width = parseInt(v.target.value)
   displaceCanvas.height = parseInt(v.target.value)
   console.log(displaceCanvas.height)
-  update()
+  update(State.state)
 })
 
 let btnExport = document.getElementById('btn-export')
@@ -51,9 +51,9 @@ const downloadImage = (data, filename = 'texture.jpg') => {
   a.click()
 }
 
-const update = () => {
+const update = (settings) => {
   //console.log(State.State)
-  Draw(cv, ctx, State.state)
+  Draw(cv, ctx, settings)
 }
 
-update()
+update(State.state)
