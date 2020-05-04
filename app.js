@@ -1,32 +1,27 @@
 import Utils from './modules/utils.js'
 import Draw from './modules/draw.js'
+import State from './State.js'
 
 let cv = document.querySelector('canvas')
 let ctx = cv.getContext('2d')
 
-let settings = {
-  iterations: 100,
-  size: 10,
-  shape: 'square',
-}
-
 let shapeSelector = document.getElementById('selector-shape')
 shapeSelector.addEventListener('change', (v) => {
-  settings = { ...settings, shape: v.target.value }
+  State.shape = v.target.value
   update()
 })
 
 let sliderSize = document.getElementById('slider-size')
 sliderSize.value = settings.size
 sliderSize.addEventListener('mouseup', (v) => {
-  settings = { ...settings, size: parseInt(v.target.value) }
+  State.size = parseInt(v.target.value)
   update()
 })
 
 let sliderIterations = document.getElementById('slider-iterations')
 sliderIterations.value = settings.iterations
 sliderIterations.addEventListener('mouseup', (v) => {
-  settings = { ...settings, iterations: parseInt(v.target.value) }
+  State.iterations = parseInt(v.target.value)
   update()
 })
 
@@ -57,8 +52,8 @@ const downloadImage = (data, filename = 'texture.jpg') => {
 }
 
 const update = () => {
-  Draw(cv, ctx, settings)
-  //console.log(settings)
+  //console.log(State.State)
+  Draw(cv, ctx, State.state)
 }
 
 update()
