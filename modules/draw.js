@@ -42,7 +42,6 @@ export default function Draw(cv, ctx, settings) {
   ctx.fillRect(0, 0, cv.width, cv.height)
 
   const selectedFunc = drawFunctions[settings.shape]
-
-  const itrMappable = Utils.itr(settings.iterations) //Generate empty array amount
-  itrMappable.map(() => selectedFunc(cv, ctx, settings.size, ['#FFFFFF', '#000000']))
+  const itr = Utils.itr(settings.iterations) //Generate empty array amount
+  itr.forEach(() => selectedFunc(cv, ctx, settings.size, ['#FFFFFF', '#000000']))
 }
