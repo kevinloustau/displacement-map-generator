@@ -1,6 +1,6 @@
 import Utils from './modules/utils.js'
 import Draw from './modules/draw.js'
-import State from './State.js'
+import State from './state.js'
 
 let cv = document.querySelector('canvas')
 let ctx = cv.getContext('2d')
